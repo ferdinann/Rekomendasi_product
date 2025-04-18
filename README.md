@@ -200,7 +200,13 @@ Metrik evaluasi yang digunakan adalah antara lain :
 2. Davies-Bouldin Index
 3. Calinski-Harabasz Index
 4. Presisi
-5. Recall 
+5. Recall
+6. Precision@k
+7. Recall@k
+8. Mean Reciprocal Rank (MRR)
+9. Hit Rate@k
+10. Normalized Discounted Cumulative Gain@k (NDCG@k)
+11. Diversity
 
 Metrik evaluasi untuk Model based (clustering)
 | Silhouette Score | Davies-Bouldin Index | Calinski-Harabasz Index |
@@ -213,12 +219,23 @@ Metrik evaluasi untuk content based filtering
 |---------|--------|
 | 1.00 | 0.80 |
 
+Metrik evaluasi untuk Hybrid Recommendation filtering
+| Precision@k | Recall@k | MRR | Hit Rate@k | NDCG@k | Diversity |
+|---------|--------|---------|--------|---------|--------|
+| 0.1000 | 1.0000 | 0.3819 | 1.0000 | 0.5220 | 0.8774 |
+
 - Penjelasan mengenai metrik yang digunakan
   - Silhouette Score mengukur seberapa mirip suatu objek dengan kelompoknya sendiri (kohesi) dibandingkan dengan kelompok lain (separasi). Skor ini berkisar antara -1 hingga +1.
   - Davies-Bouldin Index mengukur rata-rata kemiripan setiap kelompok dengan kelompok yang paling mirip dengannya. Skor yang lebih rendah menunjukkan clustering yang lebih baik, di mana kelompok-kelompoknya padat dan terpisah dengan baik.
   - Calinski-Harabasz Index mengukur rasio antara varians antar kelompok (between-cluster variance) dan varians dalam kelompok (within-cluster variance). Skor yang lebih tinggi menunjukkan clustering yang lebih baik, di mana kelompok-kelompoknya padat dan terpisah dengan baik.
   - precision adalah metrik yang mengukur seberapa akurat model dalam memprediksi kelas positif
   - recall adalah metrik yang Mengukur seberapa baik model dalam mengidentifikasi semua kasus positif yang
+  - Precision@k (P@k): Mengukur proporsi item dalam k rekomendasi teratas yang relevan bagi pengguna.
+  - Recall@k (R@k): Mengukur proporsi item relevan yang berhasil direkomendasikan dalam k rekomendasi teratas.
+  - Mean Reciprocal Rank (MRR): Mengukur peringkat rata-rata dari rekomendasi relevan pertama untuk setiap pengguna.
+  - Hit Rate@k (HR@k): Mengukur persentase pengguna yang memiliki setidaknya satu item relevan dalam k rekomendasi teratas mereka.
+  - Normalized Discounted Cumulative Gain@k (NDCG@k): Mengukur kualitas peringkat rekomendasi dengan mempertimbangkan relevansi setiap item dan posisinya, dinormalisasi terhadap DCG ideal.
+  - Diversity: Mengukur seberapa berbeda item-item dalam daftar rekomendasi satu sama lain, biasanya berdasarkan fitur-fitur item.
 
 - Formula metriks yang digunakan
 1. Silhouette Score
@@ -275,6 +292,16 @@ k: Jumlah total kelompok.
    - TN = True Negative
    - FN = False Negative
    - FP = False Positive
+6. Precision@k (P@k) = (Jumlah item relevan dalam k rekomendasi teratas) / k
+7. Recall@k (R@k) = (Jumlah item relevan dalam k rekomendasi teratas) / (Jumlah total item relevan)
+8. Mean Reciprocal Rank (MRR) = SUM(1 / rank_i untuk setiap pengguna i) / (Jumlah total pengguna)
+9. Hit Rate@k (HR@k) = (Jumlah pengguna yang memiliki setidaknya 1 item relevan dalam k rekomendasi) / (Jumlah total pengguna)
+10. Normalized Discounted Cumulative Gain@k (NDCG@k) = DCG_k / IDCG_k
+   - dengan
+	DCG_k = SUM(rel_i / log2(i + 1) untuk i dari 1 sampai k)
+	IDCG_k = DCG_k ideal (relevansi tertinggi di peringkat teratas)
+
+11. Diversity = AVERAGE(dissimilarity(item_i, item_j) untuk semua pasangan item i dan j dalam rekomendasi)
 
 - Berdasarkan model yang telah dibuat dan di evaluasi maka problem statement yang telah dibuat sebelumnya sudah terjawab dan juga telah mencapai goals yang diharapkan
 
@@ -282,6 +309,9 @@ k: Jumlah total kelompok.
     - Sistem rekomendasi yang menghitung kesamaan antara masing-masing content.
     - Sistem rekomendasi untuk pengguna baru menggunakan algoritma clustering.
     - Menggabungkan model based(clustering) dengan content based filtering diatas dengan pendekatan Hybrid recommender system (Mixed)
-    - Berdasarkan ke-6 metrik yang digunakan setelah di evaluasi maka semua model memiliki performa baik tetapi yang memiliki metrik evaluasi yang paling bagus dari semuanya adalah model content based filtering dengan presisi 1.0 dan recall 0.8.
+    - Berdasarkan ke-11 metrik yang digunakan setelah di evaluasi maka semua model memiliki performa baik tetapi yang memiliki metrik evaluasi yang paling bagus dari semuanya adalah model content based filtering dengan presisi 1.0 dan recall 0.8.
 
+ - Kesimpulan Evaluasi model Hybrid recommendation system:
+
+	Model ini cenderung "luas" dalam rekomendasinya. Ia berhasil mencakup semua item yang relevan (recall dan hit rate tinggi), dan ketika merekomendasikan item relevan, item 	tersebut cenderung berada di peringkat yang baik (MRR dan NDCG lumayan). Namun, model juga merekomendasikan banyak item yang tidak relevan, yang menyebabkan presisi yang rendah. Keragaman yang tinggi bisa menjadi penyebab presisi rendah jika model terlalu mengeksplorasi item yang tidak disukai pengguna.
 - Solution statement yang direncanakan berdampak karena melalui berbagai model yang dibangun dapat dilihat bahwa setiap model memiliki hasil evaluasi yang beragam sehingga model yang dibangun bisa di evaluasi dan dibandingkan dengan lainnya sehingga mempermudah pemilihan model yang tepat untuk menyelesaikan permasalahan tetapi tidak semua metode rekomendasi membutuhkan metrik evaluasi seperti model Demographic filtering yang sudah akurat dengan perhitungan manual saja.
