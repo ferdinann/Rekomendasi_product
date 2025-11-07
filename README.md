@@ -2,20 +2,12 @@
 
 ## Project Overview
 
-Di era digital saat ini, e-commerce telah menjadi bagian tak terpisahkan dari kehidupan kita. Kemudahan berbelanja secara online, pilihan produk yang beragam, dan harga yang kompetitif menjadi daya tarik utama bagi konsumen. Hal ini mendorong pertumbuhan e-commerce yang sangat pesat, termasuk di Indonesia.
-Namun, dengan semakin banyaknya produk yang tersedia di platform e-commerce, konsumen seringkali merasa kesulitan untuk menemukan produk yang benar-benar sesuai dengan kebutuhan dan minat mereka. Terlalu banyak pilihan dapat menyebabkan information overload, yang pada akhirnya membuat konsumen merasa kewalahan dan kesulitan dalam mengambil keputusan.
+Di era digital saat ini, e-commerce telah menjadi bagian tak terpisahkan dari kehidupan kita. Kemudahan berbelanja secara online, pilihan produk yang beragam, dan harga yang kompetitif menjadi daya tarik utama bagi konsumen [1]. Hal ini mendorong pertumbuhan e-commerce yang sangat pesat, termasuk di Indonesia. Namun, dengan semakin banyaknya produk yang tersedia di platform e-commerce, konsumen seringkali merasa kesulitan untuk menemukan produk yang benar-benar sesuai dengan kebutuhan dan minat mereka. Terlalu banyak pilihan dapat menyebabkan information overload, yang pada akhirnya membuat konsumen merasa kewalahan dan kesulitan dalam mengambil keputusan [2].
 
 Manfaat Sistem Rekomendasi dalam E-commerce
-- Meningkatkan Kepuasan Pengguna: Dengan memberikan rekomendasi yang relevan, sistem ini membantu pengguna menemukan produk yang mereka butuhkan dengan lebih mudah dan cepat. Hal ini meningkatkan pengalaman berbelanja pengguna dan kepuasan mereka terhadap platform e-commerce.
-- Meningkatkan Penjualan: Rekomendasi produk yang tepat dapat mendorong pengguna untuk membeli lebih banyak produk. Sistem rekomendasi juga dapat membantu meningkatkan penjualan produk produk yang kurang populer atau produk baru yang mungkin belum diketahui oleh pengguna.
-- Meningkatkan Loyalitas Pelanggan: Pengalaman berbelanja yang positif dan personalisasi yang ditawarkan oleh sistem rekomendasi dapat meningkatkan loyalitas pelanggan terhadap platform - e-commerce. Pelanggan yang puas cenderung akan kembali berbelanja di platform tersebut.
-- Personalisasi Pengalaman Pengguna: Sistem rekomendasi memungkinkan platform e-commerce untuk menawarkan pengalaman berbelanja yang lebih personal bagi setiap pengguna. Rekomendasi yang diberikan disesuaikan dengan minat dan preferensi masing-masing pengguna, sehingga membuat pengalaman berbelanja menjadi lebih relevan dan menarik.
-
-- Pentingnya Sistem Rekomendasi
-Di sinilah sistem rekomendasi berperan penting. Sistem rekomendasi adalah sebuah teknologi yang dirancang untuk membantu pengguna menemukan informasi atau produk yang relevan dengan preferensi mereka. Dalam konteks e-commerce, sistem rekomendasi dapat memberikan saran produk yang dipersonalisasi berdasarkan riwayat pembelian, preferensi pengguna, dan data lainnya.
-- Choi, K., Yoo, D., Kim, G., & Suh, Y. (2012). A hybrid online-product recommendation system: Combining implicit rating-based collaborative filtering and sequential1 pattern analysis. Journal of Electronic Commerce in Organizations, 10(1), 1-18.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+- Meningkatkan Kepuasan Pengguna: Dengan memberikan rekomendasi yang relevan, sistem ini membantu pengguna menemukan produk yang mereka butuhkan dengan lebih mudah dan cepat [3].
+- Personalisasi Pengalaman Pengguna: Sistem rekomendasi memungkinkan platform e-commerce untuk menawarkan pengalaman berbelanja yang lebih personal bagi setiap pengguna. Rekomendasi yang diberikan disesuaikan dengan minat dan preferensi masing-masing pengguna, sehingga membuat pengalaman berbelanja menjadi lebih relevan dan menarik [3].
+- Sistem rekomendasi adalah sebuah teknologi yang dirancang untuk membantu pengguna menemukan informasi atau produk yang relevan dengan preferensi mereka. Dalam konteks e-commerce, sistem rekomendasi dapat memberikan saran produk yang dipersonalisasi berdasarkan riwayat pembelian, preferensi pengguna, dan data lainnya [4].
 
 ## Business Understanding
 
@@ -111,6 +103,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - filter produk yang pernah dibeli
    - Hitung jumlah kejadian pembelian
    - tampilkan 10 produk teratas
+- Kelebihan:
+   - Pendekatan ini sederhana dan mudah diterapkan karena hanya memerlukan data statistik seperti produk yang paling sering dibeli (best seller) tanpa perlu data pribadi pengguna.
+   - Cocok digunakan untuk pengguna baru (cold-start user) karena tidak memerlukan riwayat interaksi pengguna sebelumnya.
+   - Dapat memberikan rekomendasi populer yang cenderung disukai oleh banyak orang, sehingga meningkatkan kemungkinan interaksi awal pengguna.
+- Kekurangan:
+   - Rekomendasi yang dihasilkan bersifat umum dan tidak personal, karena semua pengguna mendapatkan saran produk yang sama.
+   - Tidak mempertimbangkan preferensi individu, minat, atau perilaku pengguna tertentu.
+   - Cenderung mengabaikan keberagaman produk, yang dapat menyebabkan fenomena popularity bias (produk terkenal direkomendasikan berulang kali).
 - Output
 				
 | index| product_id | brand | price | subcategory | product |
@@ -135,6 +135,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
   - Menampilkan jumlah centroid yang optimal dengan elbow method
   - latih model
   - simpan model dengan joblib
+- Kelebihan:
+  - Dapat mengelompokkan produk atau pengguna berdasarkan kemiripan fitur sehingga memungkinkan pembentukan pola perilaku yang lebih kompleks.
+  - Memungkinkan sistem untuk merekomendasikan produk serupa kepada pengguna dengan preferensi yang sama, bahkan tanpa interaksi eksplisit antar pengguna.
+  - Mengurangi kompleksitas data dengan membagi pengguna atau item ke dalam kelompok yang lebih homogen.
+- Kekurangan:
+  - Hasil rekomendasi sangat bergantung pada kualitas dan hasil preprocessing (seperti encoding dan standardisasi).
+  - Sulit menangani data dinamis karena perubahan preferensi pengguna bisa membuat model cepat usang.
+  - Pemilihan jumlah cluster yang tidak optimal dapat mengakibatkan hasil rekomendasi yang tidak akurat.
 - output
   - Top 10 produk dengan cluster yang sama dengan product "cooler"
     
@@ -158,7 +166,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
 - tahapan
   - Meng Encode feature non numerik menjadi numerik
   - memanggil fungsi cosine similarity yang telah di import sebelumnya dan menambahkan dataset sebagai parameternya.
-  
+-  Kelebihan:
+  - Memberikan rekomendasi yang relevan dan spesifik berdasarkan kesamaan konten produk (seperti merek, kategori, atau harga).
+  - Dapat berfungsi dengan baik untuk pengguna dengan riwayat interaksi terbatas, karena sistem hanya membutuhkan informasi dari produk yang disukai pengguna sebelumnya.
+  - Menghindari masalah cold-start untuk pengguna baru yang sudah memberikan sedikit interaksi awal terhadap produk tertentu.
+- Kekurangan:
+  - Cenderung menghasilkan rekomendasi yang monoton karena sistem terus merekomendasikan produk dengan karakteristik serupa (overspecialization problem).
+  - Tidak memperhitungkan faktor sosial atau tren pasar yang mungkin berpengaruh terhadap preferensi pengguna.
+  - Membutuhkan representasi fitur produk yang baik; jika fitur tidak informatif, performa sistem akan menurun.
 - output
   - Top 5 produk yang memiliki kemiripan dengan produk "printer"
 
@@ -175,7 +190,16 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
 - prinsip kerja : menggabungkan beberapa hasil rekomendasi
 - cara kerja : menggabungkan beberapa hasil rekomendasi dari berbagai strategi
 - tahapan
- - membuat fungsi untuk menggabungkan hasil rekomendasi antara clustering dan content based filtering
+  - membuat fungsi untuk menggabungkan hasil rekomendasi antara clustering dan content based filtering
+- Kelebihan:
+  - Menggabungkan kelebihan beberapa metode (dalam hal ini clustering dan content-based filtering) untuk menghasilkan rekomendasi yang lebih akurat dan seimbang.
+  - Mengurangi kelemahan masing-masing pendekatan, misalnya mengatasi popularity bias dari demographic filtering dan overspecialization dari content-based filtering.
+  - Dapat meningkatkan metrik performa seperti recall, NDCG, dan diversity, karena sistem mempertimbangkan berbagai sumber informasi.
+  - Lebih fleksibel untuk diterapkan pada berbagai jenis data dan skenario pengguna, baik pengguna baru maupun lama.
+- Kekurangan:
+  - Kompleksitas implementasi lebih tinggi dibandingkan pendekatan tunggal, karena memerlukan integrasi antar model dan sinkronisasi output rekomendasi.
+  - Membutuhkan waktu komputasi dan sumber daya yang lebih besar dalam proses pelatihan dan evaluasi.
+  - Sulit untuk menyeimbangkan kontribusi dari tiap metode dalam sistem gabungan, sehingga tuning parameter menjadi lebih rumit.
 - output
   - Top 10 produk rekomendasi berdasarkan referensi produk "tv"
 
@@ -315,3 +339,10 @@ k: Jumlah total kelompok.
 
 	Model ini cenderung "luas" dalam rekomendasinya. Ia berhasil mencakup semua item yang relevan (recall dan hit rate tinggi), dan ketika merekomendasikan item relevan, item 	tersebut cenderung berada di peringkat yang baik (MRR dan NDCG lumayan). Namun, model juga merekomendasikan banyak item yang tidak relevan, yang menyebabkan presisi yang rendah. Keragaman yang tinggi bisa menjadi penyebab presisi rendah jika model terlalu mengeksplorasi item yang tidak disukai pengguna.
 - Solution statement yang direncanakan berdampak karena melalui berbagai model yang dibangun dapat dilihat bahwa setiap model memiliki hasil evaluasi yang beragam sehingga model yang dibangun bisa di evaluasi dan dibandingkan dengan lainnya sehingga mempermudah pemilihan model yang tepat untuk menyelesaikan permasalahan tetapi tidak semua metode rekomendasi membutuhkan metrik evaluasi seperti model Demographic filtering yang sudah akurat dengan perhitungan manual saja.
+
+## Daftar Pustaka
+- [1] K. Choi, D. Yoo, G. Kim, and Y. Suh, “A hybrid online-product recommendation system: combining implicit rating-based collaborative filtering and sequential pattern analysis,” Electron. Commer. Res. Appl., vol. 11, no. 4, pp. 309-317, Jul. 2012. 
+- [2] “Recommender system,” Wikipedia. [Online]. Available: https://en.wikipedia.org/wiki/Recommender_system. [Accessed: Nov. 7, 2025].
+- [3] G. Adomavicius and A. Tuzhilin, “Toward the next generation of recommender systems: a survey of the state-of-the-art and possible extensions,” IEEE Trans. Knowl. Data Eng., vol. 17, no. 6, pp. 734-749, Jun. 2005. 
+- [4] “Hybrid Quality-Based Recommender Systems: A Systematic Literature Review,” X. vol. 11, no. 1, pp. 12, 2024. 
+MDPI
