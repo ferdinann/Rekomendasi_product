@@ -234,10 +234,10 @@ Metrik evaluasi yang digunakan adalah antara lain :
 10. Normalized Discounted Cumulative Gain@k (NDCG@k)
 11. Diversity
 
-Metrik evaluasi untuk Model based (clustering)
+Metrik evaluasi untuk Model based (Cluster Based Algorithm)
 | Silhouette Score | Davies-Bouldin Index | Calinski-Harabasz Index |
 |----------|----------|----------|
-| 0.7225198528080168 | 0.347105893653442 | 1096950.5421773233 |
+| 0.3486572869552472 | 0.8883690266362531 | 619.9196095528309 |
 
 
 Metrik evaluasi untuk content based filtering
@@ -248,7 +248,7 @@ Metrik evaluasi untuk content based filtering
 Metrik evaluasi untuk Hybrid Recommendation filtering
 | Precision@k | Recall@k | MRR | Hit Rate@k | NDCG@k | Diversity |
 |---------|--------|---------|--------|---------|--------|
-| 0.1000 | 1.0000 | 0.3819 | 1.0000 | 0.5220 | 0.8774 |
+| 0.1003 | 0.8630 | 0.8268 | 0.9737 | 0.7864 | 0.8482 |
 
 - Penjelasan mengenai metrik yang digunakan
   - Silhouette Score mengukur seberapa mirip suatu objek dengan kelompoknya sendiri (kohesi) dibandingkan dengan kelompok lain (separasi). Skor ini berkisar antara -1 hingga +1.
