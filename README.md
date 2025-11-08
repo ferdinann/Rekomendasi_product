@@ -35,7 +35,7 @@ Manfaat Sistem Rekomendasi dalam E-commerce
 ## Data Understanding
 [Data E-commerce Product Elektronic](https://www.kaggle.com/datasets/ferdinantaginting/data-product).
 
-Data yang digunakan berasal dari kaggle dengan jumlah 9 kolom dan 88512 baris data. Empat feature adalah numerik dengan 3 type data int dan 1 lainnya adalah float dan 5 sisanya adalah type data object. Kondisi data masih cukup kotor dimana terdapat banyak data null saat pengecekan dengan isnull.sum dan juga banyak data duplicate saat pengecekan dengan duplicate.sum. 
+Data yang digunakan berasal dari kaggle dengan jumlah 9 kolom dan 885129 baris data. Empat feature adalah numerik dengan 3 type data int dan 1 lainnya adalah float dan 5 sisanya adalah type data object. Kondisi data masih cukup kotor dimana terdapat banyak data null saat pengecekan dengan isnull.sum dan juga banyak data duplicate saat pengecekan dengan duplicate.sum. 
 
 **Data Exploration:**
 - **Menampilkan jumlah data unik pada setiap feature pada data:** Mengetahui berapa banyak nilai berbeda yang terdapat dalam setiap kolom dataset. Ini memberikan wawasan tentang variasi data.
@@ -72,13 +72,15 @@ Data yang digunakan berasal dari kaggle dengan jumlah 9 kolom dan 88512 baris da
 - **Menghapus kolom category_id dan category_code:** Menghilangkan kolom-kolom yang dianggap tidak relevan setelah proses transformasi atau karena redundansi informasi.
 
 **Penyiapan Data untuk Modeling (Demographic Filtering):**
+- **Menghapus beberapa feature yang tidak diperlukan dalam menentukan product Best Seller** diantaranya adalah 'event_type', 'category', 'user_id', 'event_time', 'user_session'
 - **Menginisialisasi variabel untuk menyimpan data yang sudah difilter:** Membuat wadah untuk menyimpan subset data yang telah diproses dan siap digunakan untuk pemodelan.
 - **Menyimpan 10 nama produk terlaris dalam variabel recomBS:** Mengidentifikasi dan menyimpan nama dari 10 produk dengan jumlah pembelian tertinggi. Ini kemungkinan akan digunakan sebagai dasar rekomendasi.
 - **Menginisialisasi variabel untuk produk dengan nilai yang sama seperti recomBS:** Membuat variabel yang berisi data terkait dengan 10 produk terlaris.
 - **Menghapus feature "rating":** Menghilangkan kolom 'rating', kemungkinan karena tidak relevan untuk pendekatan *Demographic filtering* pada tahap ini.
 - **Menghapus data duplicate dan menampilkan data unik:** Memastikan bahwa data yang akan digunakan untuk pemodelan *Demographic filtering* bebas dari duplikasi dan hanya berisi item-item yang unik.
 
-**Penyiapan Data untuk Clustering (Model Based):**
+**Penyiapan Data untuk Cluster Based Algorithm (Model Based):**
+- **Menghapus beberapa feature yang tidak digunakan dalam membuat model based** diantaranya adalah 'event_type', 'event_time', 'user_session', 'category', 'rating', 'price'
 - **Mengencoding feature non numerik menjadi numerik untuk clustering:** Mengubah kolom-kolom yang berisi data kategorikal (teks) menjadi format numerik yang dapat diproses oleh algoritma *clustering*. Teknik seperti *label encoding* atau *one-hot encoding* mungkin digunakan.
 - **Standardisasi data agar memiliki skala yang sama:** Menerapkan penskalaan fitur dengan StandardScaler untuk memastikan bahwa semua fitur memiliki rentang nilai yang serupa. Ini penting agar fitur dengan nilai yang lebih besar tidak mendominasi perhitungan jarak dalam algoritma *clustering*.
 - **Menentukan jumlah kluster yang optimal:** Menggunakan metode visualisasi dengan *elbow method* untuk membantu menentukan jumlah kluster yang paling sesuai untuk data.
