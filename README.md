@@ -117,16 +117,17 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
 				
 | index| product_id | brand | price | subcategory | product |
 |----------|----------|----------|---------|----------|------|
-|420038	|779865	|asus	|268.06	|components	|videocards|
-|399626	|494235	|hi-black|	10.52	|peripherals	|printer|
-|369024	|4101537 |	asus|	307.43	|components	|videocards|
-|538197	|4155387 |	sapphire|	213.11	|components	|videocards|
-|368787	|3961720 |	msi	 |572.57	|components	|videocards|
-|25880	|1044429 |	pioneer|	96.35	|accessories|	player|
-|656288	|4079108 | 	asus	|489.54	|components	|videocards|
-|73050	|125338	 |creative	|57.46	|audio	|acoustic|
-|6881	|136700	| asrock	|77.73	|components	|motherboard|
-|613358	|4101560 |	asus	|509.54	|components	|videocards|
+| 775353	|1248293	|hp|	156.95|	peripherals|	printer|
+| 31254	|3758800|	netproduct|	31.02|	peripherals|	printer|
+| 207957	|4005380	|msi	|236.37|	components|	motherboard|
+| 57471|	16116|	sven|	16.05	|peripherals|	camera|
+| 49948	|817333|	logitech|	38.37|	peripherals|	camera|
+| 828239|	1674551	|amd|	53.49|	components|	cpu|
+| 699354|	1444307|	digma	|32.51|	accessories|	player|
+| 156728|	482057|	canon|	154.06|	peripherals|	printer|
+| 548292|	665275	|alpine|	202.38|	accessories	|player|
+| 37967	|4155379	|sapphire|	254.38|	components|	videocards|
+
 
 2. Clustering
 - prinsip kerja : mengelompokkan produk yang memiliki jarak terdekat
@@ -148,18 +149,18 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
 - output
   - Top 10 produk dengan cluster yang sama dengan product "cooler"
     
-| product_id | brand | user_id | subcategory  | product | cluster|
-|------------|-------|---------|--------------|----------|------|
-|139905.0   |zalman  |1.515916e+18   |components       |cooler |0 |
-|635807.0   |pantum  |1.515916e+18  |peripherals    | printer    |0 |
-|664325.0  | carver | 1.515916e+18  |  tools   |   saw  |   0 |
-|716611.0 |  d-link  |1.515916e+18 |  network  |  router  |    0 |
-|716611.0 |  d-link | 1.515916e+18 |  network |  router |   0 |
-|1080093.0 |  ricoh | 1.515916e+18 | peripherals |  printer| 0 |
-|1455459.0  | sony | 1.515916e+18|   video| tv  |  0 |
-|3537266.0 | kenwood | 1.515916e+18 | accessories | player | 0 |
-|523117.0 | asrock | 1.515916e+18 |  components | motherboard | 0 |
-|10914.0 | sony | 1.515916e+18|  camera | video    |   0 |
+| Index | brand  | subcategory  | product | cluster|
+|------------|--------|--------------|----------|------|
+|0   |  zalman   |components|          cooler |      13|
+|70   | lenovo   |components|          cooler |      13|
+|74  | philips      |kitchen |        blender |      13|
+|85   | magnit     | kitchen |          fryer |      13|
+|91  | redmond    |  kitchen | coffee_machine |      13|
+|101  |  sinbo   |   kitchen |        blender |      13|
+|103  |polaris  |environment |     air_heater |      13|
+|131   | titan   |components |         cooler |      13|
+|143  |polaris  |    kitchen | coffee_machine |      13|
+|158  |mallony |     kitchen | coffee_machine |     13|
 
 
 3. Item based filtering
@@ -205,18 +206,18 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
 - output
   - Top 10 produk rekomendasi berdasarkan referensi produk "tv"
 
-|index|product_id| brand |user_id	|subcategory| product |
-|-----|----------|-------|--------|-----------|---------|
-|0	|139905.0|	zalman|	1.515916e+18|	components|	cooler|
-|1	|635807.0	|pantum|	1.515916e+18|	peripherals	|printer|
-|2	|664325.0|	carver|	1.515916e+18|	tools	|saw|
-|3	|716611.0|	d-link|	1.515916e+18|	network|	router|
-|6	|1455459.0|	sony|	1.515916e+18|	video|	tv|
-|7	|3537266.0|	kenwood|	1.515916e+18|	accessories|player|
-|8	|523117.0|	asrock|	1.515916e+18|	components	|motherboard|
-|9	|10914.0|	sony|	1.515916e+18|	camera|	video|
-|10	|3828758.0|	eva	|1.515916e+18|	audio|	acoustic|
-|11	|1507291.0|	supermicro|	1.515916e+18|components|power_supply|
+|index | brand 	|subcategory| product |
+|------|--------|-----------|---------|
+|1	|pantum	|peripherals|	printer|
+|5	|sony	|video	|tv|
+|21	|ubiquiti|	peripherals|	wifi|
+|44	|palmexx|	peripherals	|vr|
+|67	|p.i.t.	|tools|	pump|
+|68	|mikrotik|	network|	router|
+|79	|w.e.p	|tools	|soldering|
+|88	|mustek|	peripherals|	scanner|
+|113|	xiaomi|	tools|	screw|
+|129|	wester|	tools|	welding|
 
 
 ## Evaluation
