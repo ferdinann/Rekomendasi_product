@@ -35,13 +35,36 @@ Manfaat Sistem Rekomendasi dalam E-commerce
 ## Data Understanding
 [Data E-commerce Product Elektronic](https://www.kaggle.com/datasets/ferdinantaginting/data-product).
 
-Data yang digunakan berasal dari kaggle dengan jumlah 9 kolom dan 885129 baris data. Empat feature adalah numerik dengan 3 type data int dan 1 lainnya adalah float dan 5 sisanya adalah type data object. Kondisi data masih cukup kotor dimana terdapat banyak data null saat pengecekan dengan isnull.sum dan juga banyak data duplicate saat pengecekan dengan duplicate.sum. 
+Data yang digunakan berasal dari kaggle dengan jumlah 9 kolom dan 885.129 baris data. Empat feature adalah numerik dengan 3 type data int dan 1 lainnya adalah float dan 5 sisanya adalah type data object. Kondisi data masih cukup kotor dimana terdapat banyak data null saat pengecekan dengan isnull.sum dan juga banyak data duplicate saat pengecekan dengan duplicate.sum. 
+
+|  Feature(kolom) | Jumlah data null(kosong)  |
+|------------|--------|
+|event_time	|0|
+|event_type	|0|
+|product_id	|0|
+|category_id|	0|
+|category_code|	236219|
+|brand	|212364|
+|price	|0|
+|user_id|	0|
+|user_session|	165|
+
+Data diatas memiliki jumlah nilai kosong yang cukup besar pada kolom category_code dan brand sehingga perlu penanganan yaitu dengan menghapus baris yang kosong karena nilai kosong sangat mempengaruhi kualitas data yang akan digunakan dalam membuat sistem rekomendasi dan ini juga kita lakukan karena jumlah data kita yang sangat besar yaitu 885.129 baris data sehingga dengan menghapus data yang kosong tersebut kita masih bisa membangun sistem rekomendasi yang optimal.
+
+| Jumlah data duplikat  |
+|------------|
+|401	|
+
+data duplikat akan kita hapus karena data ini cenderung membuat model menjadi bias.
 
 **Data Exploration:**
 - **Menampilkan jumlah data unik pada setiap feature pada data:** Mengetahui berapa banyak nilai berbeda yang terdapat dalam setiap kolom dataset. Ini memberikan wawasan tentang variasi data.
 - **Menampilkan data unik pada kolom 'event_type':** Melihat nilai-nilai spesifik yang ada dalam kolom 'event_type', yang mungkin merepresentasikan jenis interaksi pengguna.
+- <img width="696" height="427" alt="image" src="https://github.com/user-attachments/assets/3dc6deda-74e6-46c9-8c18-fa603ed737dd" />
 - **Menampilkan nilai unik pada setiap kolom dalam dataset:** Mendapatkan daftar semua nilai unik untuk setiap kolom, memberikan pemahaman mendalam tentang isi data.
-
+- Produk dengan transaksi tertinggi adalah videocards, sementara untuk subkaterori produk nya adalah components dan untuk kategori produk adalah computers.
+  
+Dari informasi diatas kita dapat menemukan insight bahwa pengguna cenderung lebih banyak sekedar melihat tanpa membeli produk. Memberikan rekomendasi produk berdasarkan produk yang paling sering dibeli pengguna akan meningkatkan ketertarikan atau daya beli pengguna 
 #### Variabel-variabel pada E-commerce Product Elektronic dataset adalah sebagai berikut:
 - event_time : merupakan waktu saat melakukan aksi pada aplikasi seperti waktu pembelian, menambahkan ke keranjang, dan melihat produk.
 - event_type : merupakan jenis aksi yang dilakukan seperti pembelian, menambahkan ke keranjang, dan melihat produk.
